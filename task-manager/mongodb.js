@@ -1,4 +1,3 @@
-// CRUD (create, read, update and read)
 
 const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient
