@@ -1,22 +1,25 @@
-
 const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient
 
-const connectionURL = 'mongodb://localhost:27017';
-const databaseName = 'task-manager';
+const connectionURL = 'mongodb://127.0.0.1:27017';
+const databaseName = 'local';
+
 
 MongoClient.connect(connectionURL, (error, client) => {
     if (error) {
-        return console.log('Unable to connect to database', error);
+        return console.log('Unable to connect to database!');
     }
-
-    // Accesing to DB (mdb will create automatically db)
-    const db = client.db(databaseName);
-
-    console.log('Connected!');
+    console.log('Now here!')
+    const db = client.db(databaseName)
 
     db.collection('users').insertOne({
         name: 'Simone',
-        age: 24
+        age: '24'
+    }, (error, result) => {
+        if (error) {
+            return console.log('Unable to insert user')
+        }
+        console.log(result.ops)
     })
 })
+console.log('qui!')
